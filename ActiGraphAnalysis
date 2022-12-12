@@ -4,3 +4,9 @@
 import csv
 import pandas
 
+df = pd.read_csv('True.csv',chunksize = 8000000,names=('id','time','lati','long','url','tag'),usecols=['time','lati','long','url','tag'])
+for r in df:
+    for row_index,row in r.iterrows():
+        if row[4] == sys.argv[1]:
+           for i in range(0,4):
+              print(row[i])
