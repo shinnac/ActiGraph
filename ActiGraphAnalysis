@@ -1,10 +1,16 @@
 #アクチグラフのCSVデータを読み込み、活動量データとして見やすい形に修正して出力する。
 
 #CSVデータの読み込み
-import csv
-import pandas
+#pandasのデータ処理法について：https://qiita.com/sh_tomato/items/a2dba09b181658ca923e
 
-df = pd.read_csv('True.csv',chunksize = 8000000,names=('id','time','lati','long','url','tag'),usecols=['time','lati','long','url','tag'])
+import csv
+import pandas as pd
+
+df = pd.read_csv('True.csv',chunksize = 10000,names=('id','time','lati','long','url','tag'),usecols=['time','lati','long','url','tag'])
+#chunksize:一度に読み込む行数。1800行で1分、9000行で5分、18000行で10分分のデータになる。
+
+
+
 for r in df:
     for row_index,row in r.iterrows():
         if row[4] == sys.argv[1]:
