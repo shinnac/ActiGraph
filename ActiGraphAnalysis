@@ -6,7 +6,7 @@
 import csv
 import pandas as pd
 
-df = pd.read_csv('True.csv',chunksize = 10000,names=('id','time','lati','long','url','tag'),usecols=['time','lati','long','url','tag'])
+df = pd.read_csv('SNRAW.',chunksize = 10)
 #chunksize:一度に読み込む行数。1800行で1分、9000行で5分、18000行で10分分のデータになる。
 
 
